@@ -57,7 +57,7 @@ var SButton = new Button ({
     }
 });
 
-var DButton = new Button ({
+var CButton = new Button ({
     x: 200,
     y: 200,
     label: "Circle",
