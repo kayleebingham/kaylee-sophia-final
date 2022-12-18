@@ -1,1 +1,48 @@
+var currentColor = color(0, 0, 0);
+var currentScene = 1;
 
+//Khan Button class with mouseClicked function
+
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 100;
+    this.height = config.height || 50;
+    this.label = config.label || "Click";
+    this.onClick = config.onClick || function() {};
+    this.bg = config.bg || color(144, 219, 179);
+};
+
+Button.prototype.changeColor = function(newColor){
+    this.bg = newColor;
+    };
+
+Button.prototype.draw = function() {
+     fill(this.bg);
+     rect(this.x, this.y, this.width, this.height, 5);
+     fill(255, 255, 255);
+     textSize(20);
+     textAlign(LEFT, TOP);
+     text(this.label, this.x + 20, this.y + this.height/4);
+};
+
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x && mouseX < (this.x + this.width) && mouseY > this.y && mouseY < (this.y + this.height);
+};
+
+Button.prototype.handleMouseClick = function() {
+    if (this.isMouseInside()) {
+        this.onClick();
+    }
+};
+
+// start button, when clicked it changes the scene and allows you to choose a shape to trace
+
+var startButton = new Button({
+    x: 150,
+    y: 300,
+    label: "Start!",
+    onClick: function() {
+        currentScene = 2;
+    }
+});
