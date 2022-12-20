@@ -154,3 +154,186 @@ textSize(bitmojiHeight/100*30);
 fill(245, 237, 245);
 text("Y",bitmojix-(bitmojiHeight/100*14),bitmojiy-(bitmojiHeight/100*54),bitmojiHeight/100*305,bitmojiHeight/100*169);
 };
+//kaylee bitmoji
+
+var drawBitmoji2 = function (x, y, bitmojiHeight){
+noStroke();
+fill (255,224,189); //skin tone
+ellipse(x,y,bitmojiHeight/100*83,bitmojiHeight/100*100); //head
+fill (236,213,167); //hair fill
+quad(x-(bitmojiHeight/100*51),y+(bitmojiHeight/100*100),x-(bitmojiHeight/100*38),y- (bitmojiHeight/100*40),x+(bitmojiHeight/100*4),y-(bitmojiHeight/100*49),x-(bitmojiHeight/100*28),y+(bitmojiHeight/100*8)); //left hair
+quad (x+(bitmojiHeight/100*53),y+(bitmojiHeight/100*102),x+(bitmojiHeight/100*48),y- (bitmojiHeight/100*37),x+(bitmojiHeight/100*4),y-(bitmojiHeight/100*50),x+(bitmojiHeight/100*32),y+(bitmojiHeight/100*2)); //right hair
+ellipse(x+(bitmojiHeight/100*3),y-(bitmojiHeight/100*38),(bitmojiHeight/100*83),(bitmojiHeight/100*23)); //top hair
+fill (133, 171, 206); //eye color
+ellipse (x - (bitmojiHeight/100*10), y , (bitmojiHeight/100*9), (bitmojiHeight/100*6)); //left eye
+ellipse (x + (bitmojiHeight/100*17), y , (bitmojiHeight/100*9), (bitmojiHeight/100*6)); //right eye
+fill (255, 224, 189); //skin tone
+stroke(0, 0, 0);
+bezier (x, y + (bitmojiHeight/100*4) , x + (bitmojiHeight/100*18), y + (bitmojiHeight/100*22), x - (bitmojiHeight/100*6), y + (bitmojiHeight/100*15), x - (bitmojiHeight/100*3), y + (bitmojiHeight/100*15)); //nose
+fill (255, 255, 255); //white teeth
+arc(x + (bitmojiHeight/100*3) , y + (bitmojiHeight/100*25) , (bitmojiHeight/100*30), (bitmojiHeight/100*13), (bitmojiHeight/100*1), (180)); // mouth
+line(x - (bitmojiHeight/100*14) ,y + (bitmojiHeight/100*24) ,x + (bitmojiHeight/100*19), y + (bitmojiHeight/100*24)); //top of mouth
+noStroke(); 
+fill (139,64, 0); //hat color
+ellipse (x + (bitmojiHeight/100*3), y - (bitmojiHeight/100*37) , (bitmojiHeight/100*86), (bitmojiHeight/100*38)); // top of hat
+rect (x - (bitmojiHeight/100*42), y - (bitmojiHeight/100*38), (bitmojiHeight/100*88), (bitmojiHeight/100*28)); // bottom of hat
+fill (220, 202, 152); // shirt color
+rect (x - (bitmojiHeight/100*59) , y + (bitmojiHeight/100*50) , (bitmojiHeight/100*127), (bitmojiHeight/100*71)); // shirt
+ellipse (x - (bitmojiHeight/100*40), y + (bitmojiHeight/100*75), (bitmojiHeight/100*48), (bitmojiHeight/100*74)); //left shoulder
+ellipse (x + (bitmojiHeight/100*49), y + (bitmojiHeight/100*75), (bitmojiHeight/100*48), (bitmojiHeight/100*74)); //right shoulder
+fill (0, 0, 0); // text color
+textSize ((bitmojiHeight/100*31));  // text size
+text ("KB", x - (bitmojiHeight/100*15) , y + (bitmojiHeight/100*76), (bitmojiHeight/100*100), (bitmojiHeight/100*67)); //text 
+}; 
+//font
+var f = createFont("monospace");
+
+//splashScreen function
+ //title page
+var splash = function () {
+    currentScene = 1;
+    background(22, 130, 92);
+    fill(0, 0, 0);
+    textSize(47);
+    textFont(f);
+    text("Learn How to Draw Shapes!", 24, 27);
+    textSize(13);
+    text("Click the Start Button!", 108, 238);
+    text("Authors: Sophia DiMartino and Kaylee Bingham", 40, 76);
+    fill(22, 130, 92);
+    strokeWeight(8);
+    stroke(84, 232, 188);
+    rect(155,107,75,75);
+    ellipse(70,144,75,75);
+    triangle(325,105,275,183,374,183);
+    noStroke();
+    startButton.draw();
+    strokeWeight(1);
+    drawBitmoji(74, 258, 78);
+    drawBitmoji2(321,258,78);
+};
+//second page to chose which shape you can trace
+var splash2 = function() {
+    currentScene = 2;
+    background(22, 130, 92);
+    fill(0, 0, 0);
+    textSize(25);
+    text("Learn How to Trace Shapes!", 10, 50);
+    textSize(14);
+    text("Click on Any Shape to Start!", 75, 171);
+    text("Authors: Sophia DiMartino and Kaylee Bingham", 9, 93);
+    SButton.draw();
+    CButton.draw();
+    TButton.draw();
+    drawBitmoji(120,286,50);
+    drawBitmoji2(276,286,50);
+    noStroke();
+    fill(101, 199, 134);
+    //boarder used with rectangle function and triangles with a while loop
+var x = 0;
+while (x < 400) {
+    rect (x, 1, 85, 50);
+    rect (x, 343, 85, 117);
+    x += 72;
+}
+fill(22, 130, 92);
+var x = 0;
+while (x < 400) {
+     triangle(x+37,1,x+79,50,x,50);
+     triangle(x+37,345,x+70,400,x,400);
+    x += 70;
+}
+
+};
+
+// square, circle, and triangle screens that gives 3 colors to choose from to trace the shape, defult color is white you have to chose another color from the side
+
+var splash3 = function() {
+    currentScene = 3;
+    background(22, 130, 92);
+    fill(0, 0, 0);
+    textSize(80);
+    text(buttonName[1], 69,-6);
+    fill(22, 130, 92);
+    stroke(255, 255, 255);
+    strokeWeight(26);
+    rect(150, 100, 200, 200);
+    textSize(12);
+    noStroke();
+    Blue.draw();
+    Green.draw();
+    Brown.draw();
+};
+
+var splash4 = function() {
+    currentScene = 4;
+    background(22, 130, 92);
+    fill(0, 0, 0);
+    textSize(80);
+    text(buttonName[2], 69,-6);
+    fill(22, 130, 92);
+    stroke(255, 255, 255);
+    strokeWeight(26);
+    ellipse(242, 225, 225, 225);
+    textSize(12);
+    noStroke();
+    Blue.draw();
+    Green.draw();
+    Brown.draw();
+};
+
+var splash5 = function() {
+    currentScene = 5;
+    background(22, 130, 92);
+      fill(0, 0, 0);
+    textSize(80);
+    text(buttonName[3], 16,-6);
+    fill(22, 130, 92);
+    stroke(255, 255, 255);
+    strokeWeight(26);
+    triangle(150, 275, 350, 275, 250, 100);
+    textSize(12);
+    noStroke();
+    Blue.draw();
+    Green.draw();
+    Brown.draw();
+};
+
+//function for tracing the shapes by dragging the mouse allong the white outline of the shape
+
+mouseDragged = function() {
+    if (currentScene === 3 || currentScene === 4 || currentScene === 5) {
+        ellipse(mouseX, mouseY, 20, 20);
+}
+};
+//tells what splash screen each scene will go along with 
+draw = function() {
+     if (currentScene === 1) { 
+         splash ();
+     } else if (currentScene === 2) { 
+         splash2 ();
+     } else if (currentScene === 3) {
+         splash3 ();
+         noLoop();
+     } else if (currentScene === 4) {
+         splash4 ();
+         noLoop();
+     } else if (currentScene === 5) {
+         splash5 ();
+         noLoop();
+     }
+};
+//mouse clicked function for each of the buttons on each of the screens. 
+mouseClicked = function () {
+    if (currentScene === 1) {
+        startButton.handleMouseClick();
+    } else if (currentScene === 2) {
+        SButton.handleMouseClick();
+        CButton.handleMouseClick();
+        TButton.handleMouseClick();
+    } else {
+        Blue.handleMouseClick();
+        Green.handleMouseClick();
+        Brown.handleMouseClick();
+    }
+};
