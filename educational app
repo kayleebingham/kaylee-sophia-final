@@ -12,11 +12,11 @@ var Button = function(config) {
     this.onClick = config.onClick || function() {};
     this.bg = config.bg || color(144, 219, 179);
 };
-
+//new colors for color buttons
 Button.prototype.changeColor = function(newColor){
     this.bg = newColor;
     };
-
+// this gives the shape and the text size on each of the buttons
 Button.prototype.draw = function() {
      fill(this.bg);
      rect(this.x, this.y, this.width, this.height, 5);
@@ -25,57 +25,59 @@ Button.prototype.draw = function() {
      textAlign(LEFT, TOP);
      text(this.label, this.x + 20, this.y + this.height/4);
 };
-
+//allows the mouse clicked to only work inside the rectangle of the button
 Button.prototype.isMouseInside = function() {
     return mouseX > this.x && mouseX < (this.x + this.width) && mouseY > this.y && mouseY < (this.y + this.height);
 };
-
+//mouseclicked function so you can click on each of the buttons
 Button.prototype.handleMouseClick = function() {
     if (this.isMouseInside()) {
         this.onClick();
     }
 };
-
+//array for button name and titles
+var buttonName = ["Start!", "Square", "Circle", "Triangle"];
 // start button, when clicked it changes the scene and allows you to choose a shape to trace
 
 var startButton = new Button({
     x: 150,
     y: 300,
-    label: "Start!",
+    label: buttonName[0],
     onClick: function() {
         currentScene = 2;
     }
 });
-// Letter buttons for a square, cicle, and triangle
+
+// buttons for a square, cicle, and triangle. then tells what scene the button will lead to 
 
 var SButton = new Button ({
-    x: 100,
+    x: 27,
     y: 200,
-    label: "Square",
+    label: buttonName[1],
     onClick: function() {
         currentScene = 3;
     }
 });
 
 var CButton = new Button ({
-    x: 200,
+    x: 150,
     y: 200,
-    label: "Circle",
+    label: buttonName[2],
     onClick: function() {
         currentScene = 4;
     }
 });
 
 var TButton = new Button ({
-    x: 200,
-    y: 300,
-    label: "Triangle",
+    x: 266,
+    y: 200,
+    label: buttonName[3],
     onClick: function() {
-        currentScene = 3;
+        currentScene = 5;
     }
 });
 
-// color buttons, when click it sets the color to trace the letter
+// color buttons, when click it sets the color to trace the shape
 
 var Blue = new Button ({
     x: 0,
@@ -86,7 +88,7 @@ var Blue = new Button ({
         fill(132, 146, 207);
     }
 });
-Blue.changeColor(color(237, 150, 201));
+Blue.changeColor(color(132, 146, 207));
 
 var Green = new Button ({
     x: 0,
@@ -108,7 +110,7 @@ var Brown = new Button ({
         fill(122, 58, 73);
     }
 });
-Brown.changeColor(color(183, 114, 204));
+Brown.changeColor(color(122, 58, 73));
     
 //Sophia bitmoji 
 var drawBitmoji = function (bitmojix, bitmojiy,bitmojiHeight)
@@ -152,35 +154,3 @@ textSize(bitmojiHeight/100*30);
 fill(245, 237, 245);
 text("Y",bitmojix-(bitmojiHeight/100*14),bitmojiy-(bitmojiHeight/100*54),bitmojiHeight/100*305,bitmojiHeight/100*169);
 };
-
-//kaylee bitmoji
-
-var drawBitmoji2 = function (x, y, bitmojiHeight){
-noStroke();
-fill (255,224,189); //skin tone
-ellipse(x,y,bitmojiHeight/100*83,bitmojiHeight/100*100); //head
-fill (236,213,167); //hair fill
-quad(x-(bitmojiHeight/100*51),y+(bitmojiHeight/100*100),x-(bitmojiHeight/100*38),y- (bitmojiHeight/100*40),x+(bitmojiHeight/100*4),y-(bitmojiHeight/100*49),x-(bitmojiHeight/100*28),y+(bitmojiHeight/100*8)); //left hair
-quad (x+(bitmojiHeight/100*53),y+(bitmojiHeight/100*102),x+(bitmojiHeight/100*48),y- (bitmojiHeight/100*37),x+(bitmojiHeight/100*4),y-(bitmojiHeight/100*50),x+(bitmojiHeight/100*32),y+(bitmojiHeight/100*2)); //right hair
-ellipse(x+(bitmojiHeight/100*3),y-(bitmojiHeight/100*38),(bitmojiHeight/100*83),(bitmojiHeight/100*23)); //top hair
-fill (133, 171, 206); //eye color
-ellipse (x - (bitmojiHeight/100*10), y , (bitmojiHeight/100*9), (bitmojiHeight/100*6)); //left eye
-ellipse (x + (bitmojiHeight/100*17), y , (bitmojiHeight/100*9), (bitmojiHeight/100*6)); //right eye
-fill (255, 224, 189); //skin tone
-stroke(0, 0, 0);
-bezier (x, y + (bitmojiHeight/100*4) , x + (bitmojiHeight/100*18), y + (bitmojiHeight/100*22), x - (bitmojiHeight/100*6), y + (bitmojiHeight/100*15), x - (bitmojiHeight/100*3), y + (bitmojiHeight/100*15)); //nose
-fill (255, 255, 255); //white teeth
-arc(x + (bitmojiHeight/100*3) , y + (bitmojiHeight/100*25) , (bitmojiHeight/100*30), (bitmojiHeight/100*13), (bitmojiHeight/100*1), (180)); // mouth
-line(x - (bitmojiHeight/100*14) ,y + (bitmojiHeight/100*24) ,x + (bitmojiHeight/100*19), y + (bitmojiHeight/100*24)); //top of mouth
-noStroke(); 
-fill (139,64, 0); //hat color
-ellipse (x + (bitmojiHeight/100*3), y - (bitmojiHeight/100*37) , (bitmojiHeight/100*86), (bitmojiHeight/100*38)); // top of hat
-rect (x - (bitmojiHeight/100*42), y - (bitmojiHeight/100*38), (bitmojiHeight/100*88), (bitmojiHeight/100*28)); // bottom of hat
-fill (220, 202, 152); // shirt color
-rect (x - (bitmojiHeight/100*59) , y + (bitmojiHeight/100*50) , (bitmojiHeight/100*127), (bitmojiHeight/100*71)); // shirt
-ellipse (x - (bitmojiHeight/100*40), y + (bitmojiHeight/100*75), (bitmojiHeight/100*48), (bitmojiHeight/100*74)); //left shoulder
-ellipse (x + (bitmojiHeight/100*49), y + (bitmojiHeight/100*75), (bitmojiHeight/100*48), (bitmojiHeight/100*74)); //right shoulder
-fill (0, 0, 0); // text color
-textSize ((bitmojiHeight/100*31));  // text size
-text ("KB", x - (bitmojiHeight/100*15) , y + (bitmojiHeight/100*76), (bitmojiHeight/100*100), (bitmojiHeight/100*67)); //text 
-}; 
